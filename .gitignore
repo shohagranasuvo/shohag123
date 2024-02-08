@@ -1,32 +1,27 @@
-# Prerequisites
-*.d
+#include<iostream>
+#include<iomanip>
+#include<conio.h>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
+main()
+{
+    double a ,b ;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+    cout<<setw(20)<<"Enter two number ";
+    cin>>a>>b;
 
-# Fortran module files
-*.mod
-*.smod
+    cout<<noshowpoint;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+    cout<<setw(20)<<"Two number addition is = "<<a+b<<endl;
+    cout<<showpoint<<fixed<<setprecision(2);
 
-# Executables
-*.exe
-*.out
-*.app
+    cout<<setw(20)<<"Two number subtraction is = "<<a-b<<endl;
+
+    return 0;
+
+
+
+
+
+}
