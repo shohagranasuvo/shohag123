@@ -1,0 +1,25 @@
+#include <iostream>
+
+
+
+using namespace std;
+
+ main()
+ { double second ,hour,minutes ;
+
+
+ cout<<"How many second do you want to calculate = ";
+
+   cin>>second;
+
+   hour=second/3600;
+
+   minutes=(hour-(int)hour)*60;
+
+   second=(((hour-(int)hour)*60)-(int)minutes)*60;
+
+   cout<<(int)hour<<":"<<(int)minutes<<":"<<second;
+
+
+   return 88;
+ }
