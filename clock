@@ -4,11 +4,11 @@
 
 using namespace std;
 
- main()
+ intmain()
  { double second ,hour,minutes ;
 
 
- cout<<"How many second do you want to calculate = ";
+ 
 
    cin>>second;
 
@@ -18,8 +18,8 @@ using namespace std;
 
    second=(((hour-(int)hour)*60)-(int)minutes)*60;
 
-   cout<<(int)hour<<":"<<(int)minutes<<":"<<second;
+   cout<<(int)hour<<":"<<(int)minutes<<":"<<second<<endl;
 
 
-   return 88;
+   return 0;
  }
