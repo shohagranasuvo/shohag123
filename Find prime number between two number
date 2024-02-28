@@ -44,6 +44,10 @@ large=b;
 
  large=a;
 
+} 
+else if(a>1&&b>1&& a==b)
+{small=a;
+large=b;
 }
 
   for(small;small<=large;small++ )
