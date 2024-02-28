@@ -1,0 +1,77 @@
+#include <iostream>
+#include<cmath>
+ using namespace std; 
+int main() {
+ int a,b,small,large;
+bool prime_number;
+
+
+cout<<"Enter 2 number to find out prime number between them"<<endl;
+cout<<"First number ",cin>>a;
+cout<<"Last number ",cin>>b;
+ if (a<2 && b<2)
+ {
+
+ cout <<"There are no prime number";
+
+ }
+  else if (a<2 && b>1)
+
+ {  small=2;
+     large=b;
+ 
+  } 
+
+  else if ( b<2 && b<a&& a>1)
+
+  {
+
+     small=2; 
+     large=a;
+  }
+
+  else if(a>1 && b>1 && b>a)
+ {
+small=a;
+
+large=b;
+
+ }
+
+ else if(a>b&&a>1&&b>1)
+{
+ small=b;
+
+ large=a;
+
+}
+
+  for(small;small<=large;small++ )
+   {
+     prime_number=true;
+
+      for(int i=2;  i<=sqrt(small);i++)
+
+      {
+        if(small%i==0)
+     {                   
+       prime_number=false;
+
+        break;
+        
+                           }
+                            }
+    if ( prime_number)
+
+   { cout<<small<<" is a prime number"<<endl;}
+
+
+ }
+ return 0;
+ }
+
+
+
+
+ 
+
