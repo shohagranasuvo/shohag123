@@ -1,0 +1,145 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+
+int  r1,r2,c1,c2,i,j,k,sum=0;
+cout<<"Enter first matrix row and collum = ";
+cin>>r1;
+
+cin>>c1;
+
+cout<<"Enter second matrix row and collum =  ";
+cin>>r2;
+
+cin>>c2;
+
+while(c1!=r2)
+{
+
+cout<<"Error. Enter row and collum again  "<<endl;
+
+cout<<"Enter first matrix row and collum = ";
+cin>>r1;
+
+cin>>c1;
+
+cout<<"Enter second matrix row and collum =  ";
+cin>>r2;
+
+cin>>c2;
+
+
+}
+
+int mat1[r1] [c1] , mat2 [r2] [c2], result[r1][c2];
+
+
+cout<<"Enter First matrix"<<endl;
+
+for (int i=0;i<r1;i++)
+
+{
+for(int j=0;j<c1;j++)
+
+{
+ cout<<"Matrix 1 ["<<i<<"] ["<<j<<"] = ";
+
+
+    cin>>mat1[i] [j];
+}
+}
+cout<<"Enter Second matrix "<<endl;
+
+
+for(int i=0;i<r2;i++)
+
+{
+for(int j=0;j<c2;j++)
+{
+cout<<"Matrix 2 ["<<i<<"] ["<<j<<"] = ";
+
+
+    cin>>mat2[i] [j];
+
+}
+
+
+
+}
+
+
+cout<<"First matrix"<<endl;
+for(int i= 0;i<r1;i++)
+{
+for(int j=0;j<c1;j++)
+
+{
+cout<<mat1[i][j]<<" ";
+
+}
+cout<<endl;
+
+}
+
+cout<<"Second matrix"<<endl;
+for(int i= 0;i<r2;i++)
+{
+for(int j=0;j<c2;j++)
+
+{
+cout<<mat2[i][j]<<" ";
+
+}
+cout<<endl;
+}
+
+for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            result[i][j] = 0;
+        }}
+
+//Now time to multiplication
+
+
+for(int i=0;i<r1;i++)
+{
+for(int j=0;j<c2;j++)
+{
+for(int k=0;k<c1;k++)
+
+{
+
+sum= sum +mat1[i][k]*mat2[k][j];
+
+}
+result[i][j]=sum;
+
+sum=0;
+
+}}
+
+cout<<"Matrix multiply"<<endl;
+for(int i= 0;i<r1;i++)
+{
+for(int j=0;j<c2;j++)
+
+{
+cout<<result[i][j]<<" ";
+
+
+}
+
+cout<<endl;}
+
+return 0;
+
+}
+
+
+
+
+
+
+
+
