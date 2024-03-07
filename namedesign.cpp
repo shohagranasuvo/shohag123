@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     char name[20];
 
-    cout << "Enter your name: ";
+    cout << "Enter your message : ";
     cin.getline(name, 20);
 
     int length = strlen(name);
