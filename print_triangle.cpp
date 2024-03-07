@@ -3,7 +3,9 @@
 using namespace std;
 int main()
 {
-int n=6;
+int n;
+
+    cin>>n;
 
 
 
@@ -17,7 +19,7 @@ for(int row= 1; row<=n; row++)
         cout<<" ";
 
     }
-     for(int i=n-1;i<(2*row)+1;i++)
+     for(int i=1;i<(2*row)-1;i++)
 
      cout<<"*";
 
