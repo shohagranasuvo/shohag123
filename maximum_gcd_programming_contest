@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+
+int gcd(int a, int b)
+{
+
+    int result = min(a, b);
+    while (result > 0) {
+        if (a % result == 0 && b % result == 0) {
+            break;
+        }
+        result--;
+    }
+
+
+    return result;
+}
+
+int main()
+{ int test ,store ;
+ cin>>test ;
+ vector<int> gcdstore ;
+ while (test!= 0)
+ {
+     int number;
+     cin>>number ;
+
+
+    for (int y = number-1 ;y>0; y--)
+    {
+          if (gcd( number , y )+y == number)
+          {
+              store = y;
+          }
+
+        //gcdstore.push_back(store);
+
+    }
+
+    // int mainresult=*max_element(gcdstore.begin(), gcdstore.end());
+
+
+
+     cout<<store<<endl;
+     //gcdstore.clear();
+
+
+
+
+     test--;
+
+ }
+
+    return 0;
+}
