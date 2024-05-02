@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+
+int main()
+{ int test ,store,count = 0 ;
+ cin>>test ;
+
+ while (test!= 0)
+ {
+     int a, b ,setvalue=1,maintain=0;
+     cin>>a>>b ;
+
+
+     string mainString;
+     string subString;
+  cin.ignore();
+     getline(cin,mainString);
+     getline(cin,subString) ;
+   //cout<<mainString[0]<<endl;
+   //cout<<subString[1]<<endl;
+
+    for(int i= 0 ; i<a; i++)
+    {        setvalue=1;
+        for (int j = maintain ;j<b ;j++)
+        {
+            if (mainString[i]==subString[j])
+            {
+                count++;
+                setvalue=0;
+                maintain=j+1;
+
+
+                break;
+
+
+            }
+
+        }
+
+ if (setvalue==1)
+            {
+                break;
+            }
+
+
+    }
+
+
+  cout<<count<<endl;
+ count=0;
+
+
+     test--;
+
+ }
+
+    return 0;
+}
