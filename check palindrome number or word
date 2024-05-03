@@ -1,0 +1,88 @@
+#include <iostream>
+
+using namespace std;
+
+void checkPalindrome ( char *arr , int a , int b )
+
+{
+  int check =0;
+
+
+
+    for (int j=0; j<b ; j++)
+
+    {
+
+        if(*(arr + 0 + j )== *(arr + 0 + (b-j-1)))
+
+        {
+            check=1;
+        }
+        else
+        {
+            check=0 ;
+            break;
+        }
+
+
+
+
+    }
+
+
+if ( check == 1)
+{
+    cout<<"YES , IT'S PALINDROME"<<endl;
+}
+else
+{
+    cout<<"NO , IT'S NOT A PALINDROME "<<endl;
+}
+
+
+
+}
+
+
+
+
+int main()
+{
+int a;
+ cout<<"Enter how many  character  or number :";
+ cin>>a;
+
+ int b =a;
+
+
+char arr[a][a];
+for (int i =0 ; i<a; i++)
+{
+    for(int j= 0 ;j < a ; j++)
+
+    {
+
+
+        cin>>arr[i][j];
+        --b;
+
+        if (b==0)
+        {
+            break;
+        }
+    }
+     if (b==0)
+        {
+            break;
+        }
+
+}
+
+checkPalindrome( & arr [0] [0] ,a,a);
+
+
+
+
+
+    return 0;
+}
