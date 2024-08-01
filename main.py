@@ -1,57 +1,48 @@
+from selenium import webdriver
+from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
 
-import cv2
-import mediapipe as mp
-import pyautogui
-cam =cv2.VideoCapture(0)
-face_mesh=mp.solutions.face_mesh.FaceMesh(refine_landmarks=True)
-screen_w,screen_h =pyautogui.size()
+# Path to your msedgedriver executable
+msedgedriver_path = 'C:/Users/shoha/PycharmProjects/Automaticsendmsgtothenewsender/msedgedriver.exe'
+
+# Initialize WebDriver for Edge
+service = EdgeService(executable_path=msedgedriver_path)
+driver = webdriver.Edge(service=service)
+driver.get('https://web.whatsapp.com')
+
+# Wait for the user to scan the QR code and log in to WhatsApp Web
+print("Please scan the QR code to log in to WhatsApp Web.")
+time.sleep(20)
+
+def check_for_new_messages():
+    try:
+        # Locate chat list items
+        chat_list_items = driver.find_elements(By.CSS_SELECTOR, "div[aria-label='Chat list'] div[role='row']")
+
+        for chat_item in chat_list_items:
+            # Check if the chat item has an unread message indicator
+            unread_indicator = chat_item.find_elements(By.CSS_SELECTOR, "span[aria-label*='unread message']")
+            if unread_indicator:
+                # Click on the chat item to open the chat
+                chat_item.click()
+                time.sleep(2)  # Wait for chat to open
+
+                # Get the chat input box and send a message
+                message_box = driver.find_element(By.XPATH, "//div[@contenteditable='true'][@data-tab='10']")
+                message_box.click()
+                message_box.send_keys("Hi, how are you?")
+                message_box.send_keys(Keys.RETURN)
+
+                print("Sent automated response.")
+                time.sleep(2)  # Wait a bit before checking again
+                break  # Only respond to one new message per check to avoid spamming
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Main loop to keep checking for new messages
 while True:
-    _, frame=cam.read()
-    frame=cv2.flip(frame,1)
-    rgb_frame =cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-    output =face_mesh.process(rgb_frame)
-    landmark_points =output.multi_face_landmarks
-    frame_h, frame_w, _ = frame.shape
-    if landmark_points :
-        landmarks =landmark_points[0].landmark
-        for id, landmark in enumerate(landmarks[474:478]):
-
-            x=int(landmark.x*frame_w)
-            y=int(landmark.y*frame_h)
-            cv2.circle(frame,(x,y),3,(0,255,0))
-            if id==1:
-                screen_x =1.5*screen_w/frame_w*x
-                screen_y =1.5*screen_h /frame_h *y
-
-                pyautogui.moveTo(screen_x ,screen_y)
-
-        left =[landmarks[145],landmarks[159]]
-        for landmark in left:
-            x = int(landmark.x * frame_w)
-            y = int(landmark.y * frame_h)
-            cv2.circle(frame, (x, y), 3, (0, 255, 255))
-        print(left[0].y-left[1].y)
-
-        if(left[0].y-left[1].y)<0.01:
-            print('click')
-            pyautogui.click()
-            pyautogui.sleep(1)
-
-
-
-
-
-
-
-
-
-
-
-
-    cv2.imshow('Eye ',frame)
-    cv2.waitKey(1)
-
-
-
-
-
+    check_for_new_messages()
+    time.sleep(10)  # Check every 10 seconds
