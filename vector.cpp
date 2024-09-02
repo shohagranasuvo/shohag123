@@ -4,7 +4,7 @@ using namespace std;
 
 template <class t> // all type of vector display
 
-double display (vector<t> &v)
+void display (vector<t> &v)
 {
     for(int i=0;i<v.size();i++)
     {
@@ -14,7 +14,7 @@ double display (vector<t> &v)
     cout<<endl;
 }
 template <class j>  //all type of vector got input
-int input (vector<j> &ve , const string &vecName )
+void input (vector<j> &ve , const string &vecName )
 {
      j ele;
      int x ;
